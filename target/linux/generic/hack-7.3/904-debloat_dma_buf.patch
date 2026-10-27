@@ -14,7 +14,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 
 --- a/drivers/base/Kconfig
 +++ b/drivers/base/Kconfig
-@@ -213,7 +213,7 @@ config SOC_BUS
+@@ -213,7 +213,7 @@
  source "drivers/base/regmap/Kconfig"
  
  config DMA_SHARED_BUFFER
@@ -53,7 +53,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  
  dmabuf_kunit-y := \
  	st-dma-fence.o \
-@@ -14,3 +16,5 @@ dmabuf_kunit-y := \
+@@ -14,3 +16,5 @@
  	st-dma-resv.o
  
  obj-$(CONFIG_DMABUF_KUNIT_TEST) += dmabuf_kunit.o
@@ -61,7 +61,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 +dma-shared-buffer-objs :=  $(dma-buf-objs-y)
 --- a/drivers/dma-buf/dma-buf.c
 +++ b/drivers/dma-buf/dma-buf.c
-@@ -1869,4 +1869,5 @@ static void __exit dma_buf_deinit(void)
+@@ -1869,4 +1869,5 @@
  	dma_buf_uninit_debugfs();
  	kern_unmount(dma_buf_mnt);
  }
@@ -70,7 +70,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 +MODULE_LICENSE("GPL");
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -4575,6 +4575,7 @@ int wake_up_state(struct task_struct *p,
+@@ -4579,6 +4579,7 @@
  {
  	return try_to_wake_up(p, state, 0);
  }
@@ -80,7 +80,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
   * Perform scheduler related setup for a newly forked process p.
 --- a/fs/d_path.c
 +++ b/fs/d_path.c
-@@ -316,6 +316,7 @@ char *dynamic_dname(char *buffer, int bu
+@@ -316,6 +316,7 @@
  	start = buffer + (buflen - sz);
  	return memmove(start, buffer, sz);
  }
@@ -90,10 +90,10 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  {
 --- a/net/Kconfig
 +++ b/net/Kconfig
-@@ -75,7 +75,7 @@ config SKB_EXTENSIONS
+@@ -74,7 +74,7 @@
+ 
  config NET_DEVMEM
  	def_bool y
- 	select GENERIC_ALLOCATOR
 -	depends on DMA_SHARED_BUFFER
 +	depends on DMA_SHARED_BUFFER=y
  	depends on PAGE_POOL
